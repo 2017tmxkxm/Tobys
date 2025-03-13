@@ -12,15 +12,13 @@ public class HelloController {
     private final HelloService helloService;
     private ApplicationContext applicationContext;
 
-    public HelloController(HelloService helloService, ApplicationContext applicationContext) {
+    public HelloController(HelloService helloService) {
         this.helloService = helloService;
-        this.applicationContext = applicationContext;
-
-        System.out.println(applicationContext);
     }
 
     @GetMapping("/hello")
     public String hello(@RequestParam("name") String name) {
-        return helloService.sayHello(Objects.requireNonNull(name));
+        if(name == null || name.trim().isEmpty()) throw new IllegalStateException();
+        return helloService.sayHello(name);
     }
 }
