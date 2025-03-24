@@ -1,21 +1,13 @@
 package tobyspring.helloboot;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-// Spring context를 이용하는 Spring Container 테스트가 가능
-@ExtendWith(SpringExtension.class)
-// 로딩할 빈의 정보를 가져온다.
-@ContextConfiguration(classes = HellobootApplication.class)
-@TestPropertySource("classpath:/application.properties")
+@HellobootTest
 public class DataSourceTest {
     @Autowired
     DataSource dataSource;
