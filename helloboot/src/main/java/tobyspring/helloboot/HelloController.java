@@ -1,11 +1,6 @@
 package tobyspring.helloboot;
 
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Objects;
 
 @RestController
 public class HelloController {
@@ -19,5 +14,10 @@ public class HelloController {
     public String hello(@RequestParam("name") String name) {
         if(name == null || name.trim().isEmpty()) throw new IllegalStateException();
         return helloService.sayHello(name);
+    }
+
+    @GetMapping("/count")
+    public String count(@RequestParam("name") String name) {
+        return name + " : " + helloService.countOf(name);
     }
 }
